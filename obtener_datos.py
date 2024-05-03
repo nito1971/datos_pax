@@ -21,11 +21,13 @@ with open('/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711/0.csv', 'r') as csv
     fieldnames = next(reader)[1:]  # [1:] para eliminar el título
     print(fieldnames)    
     
-    for row in reader:
-        for i in range(len(fieldnames)):
-            pax[fieldnames[i]] = row[i]
-            i += 1
+    for row in reader:       
+        for i in range (0, len(fieldnames)):
+            a = fieldnames[i] = row[i]
+            pax
+            print(a)
+                     
             #print(pax)
             insertar_db(pax)
-      
+ 
         
