@@ -2,7 +2,6 @@ import csv
 from pymongo import MongoClient
 import hashlib
 import os
-pax = {}
 ruta = "/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711"
     
 
