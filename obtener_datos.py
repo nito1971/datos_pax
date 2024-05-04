@@ -2,6 +2,7 @@ import csv
 from pymongo import MongoClient
 import hashlib
 import os
+import time
 ruta = "/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711"
     
 
@@ -32,6 +33,7 @@ def recorrer_ruta(ruta):
     for dir, dirs, archivos in os.walk(ruta):
         for archivo in archivos:
             #if archivo.endswith(".csv"):
+                inicio = time.time()
                 archvo_a_insertar = (os.path.join(dir, archivo))
                 print("*" * 40)
                 print(archvo_a_insertar)
@@ -55,7 +57,11 @@ def recorrer_ruta(ruta):
                             insertar_db(pax)  
                             pax = {}
                     os.remove(archvo_a_insertar)
+                    fin = time.time()
                     print("Archivo eliminado")
+                    print("+" *100)
+                    print(f"Tiempo de ejecucion: {fin - inicio}")
+                    print("+" *100)
                 except:
                     pass    
 if __name__ == '__main__':
