@@ -25,13 +25,17 @@ def insertar_db(datos):
         collection.insert_one(datos)
         #print("Ok")
     except Exception as e:
-        print(e)
+        #print(e)
+        pass
 def recorrer_ruta(ruta):
     pax = {}
     for dir, dirs, archivos in os.walk(ruta):
         for archivo in archivos:
             #if archivo.endswith(".csv"):
                 archvo_a_insertar = (os.path.join(dir, archivo))
+                print("*" * 24)
+                print(archvo_a_insertar)
+                print("*" * 24)
                 # Leer archivo CSV
                 with open(archvo_a_insertar, 'r') as csvfile:
                     reader = csv.reader(csvfile)    
@@ -49,7 +53,8 @@ def recorrer_ruta(ruta):
                         _id = get_hash(str(pax))
                         insertar_db(pax)  
                         pax = {}
-                os.remove(archvo_a_insertar)    
+                os.remove(archvo_a_insertar)
+                print("Archivo eliminado")    
 if __name__ == '__main__':
     recorrer_ruta(ruta)
     
