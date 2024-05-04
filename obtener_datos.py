@@ -71,6 +71,7 @@ if __name__ == '__main__':
            
  ###################################################################################
 '''
+
 ---------------------------------
 Importaciones
 
@@ -108,9 +109,11 @@ Estructura del código
 --------------------------------------
 Funcionalidad
 
-El script tiene como objetivo recorrer una ruta específica, leer archivos CSV, procesarlos y almacenarlos en una base 
-de datos MongoDB. Cada archivo CSV se lee línea por línea, y cada fila se procesa generando un hash único para cada fila.
- Luego, el diccionario resultante se almacena en la base de datos MongoDB.
+El script tiene como objetivo recorrer una ruta específica, leer archivos CSV, procesarlos y
+almacenarlos en una base 
+de datos MongoDB. Cada archivo CSV se lee línea por línea, y cada fila se procesa generando 
+un hash único para cada fila.
+Luego, el diccionario resultante se almacena en la base de datos MongoDB.
         
 
 '''
