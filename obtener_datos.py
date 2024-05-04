@@ -37,24 +37,27 @@ def recorrer_ruta(ruta):
                 print(archvo_a_insertar)
                 print("*" * 40)
                 # Leer archivo CSV
-                with open(archvo_a_insertar, 'r') as csvfile:
-                    reader = csv.reader(csvfile)    
-                    # Recopilar nombres de campos de la primera fila
-                    fieldnames = next(reader)[1:]  # [1:] para eliminar el título
-                    #print(fieldnames)                   
-                    for row in reader:
-                        _id = get_hash(str(row))
-                        pax.update({"_id":_id})       
-                        for i in range (0, len(fieldnames)):
-                            #a = fieldnames[i] = row[i]
-                            pax.update({fieldnames[i]:row[i]})  
-                        #print(pax) 
-                        #print ("*" * 22)
-                        _id = get_hash(str(pax))
-                        insertar_db(pax)  
-                        pax = {}
-                os.remove(archvo_a_insertar)
-                print("Archivo eliminado")    
+                try:
+                    with open(archvo_a_insertar, 'r') as csvfile:
+                        reader = csv.reader(csvfile)    
+                        # Recopilar nombres de campos de la primera fila
+                        fieldnames = next(reader)[1:]  # [1:] para eliminar el título
+                        #print(fieldnames)                   
+                        for row in reader:
+                            _id = get_hash(str(row))
+                            pax.update({"_id":_id})       
+                            for i in range (0, len(fieldnames)):
+                                #a = fieldnames[i] = row[i]
+                                pax.update({fieldnames[i]:row[i]})  
+                            #print(pax) 
+                            #print ("*" * 22)
+                            _id = get_hash(str(pax))
+                            insertar_db(pax)  
+                            pax = {}
+                    os.remove(archvo_a_insertar)
+                    print("Archivo eliminado")
+                except:
+                    pass    
 if __name__ == '__main__':
     os.system("clear")
     recorrer_ruta(ruta)
