@@ -77,15 +77,19 @@ Importaciones
 - csv: biblioteca para leer y escribir archivos CSV.
 - MongoClient y MongoDB: bibliotecas para conectarse a un servidor MongoDB.
 - hashlib: biblioteca para generar hash de cadenas de texto.
-- os: biblioteca para interactuar con el sistema operativo (Ejemplo, obtener la ruta actual del archivo).
+- os: biblioteca para interactuar con el sistema operativo (Ejemplo, obtener 
+  la ruta actual del archivo).
 - time: biblioteca para trabajar con fechas y tiempos.
 
 ----------------------------------
 Definiciones de funciones
 
-- get_hash(input_string): función que calcula el hash SHA-384 de una cadena de texto. Si hay un error durante el cálculo, devuelve None.
-- insertar_db(datos): función que inserta un documento en la base de datos MongoDB. Recibe un diccionario datos como parámetro y lo almacena en la colección datos_pax.
-- recorrer_ruta(ruta): función principal que recorre una ruta específica, lee archivos CSV, los procesa y los almacena en la base de datos MongoDB.
+- get_hash(input_string): función que calcula el hash SHA-384 de una cadena de texto. 
+  Si hay un error durante el cálculo, devuelve None.
+- insertar_db(datos): función que inserta un documento en la base de datos MongoDB. 
+  Recibe un diccionario datos como parámetro y lo almacena en la colección datos_pax.
+- recorrer_ruta(ruta): función principal que recorre una ruta específica, lee archivos
+  CSV, los procesa y los almacena en la base de datos MongoDB.
 
 - Main
 
