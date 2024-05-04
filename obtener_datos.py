@@ -41,7 +41,7 @@ def recorrer_ruta(ruta):
                     reader = csv.reader(csvfile)    
                     # Recopilar nombres de campos de la primera fila
                     fieldnames = next(reader)[1:]  # [1:] para eliminar el título
-                    print(fieldnames)                   
+                    #print(fieldnames)                   
                     for row in reader:
                         _id = get_hash(str(row))
                         pax.update({"_id":_id})       
