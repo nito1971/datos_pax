@@ -1,5 +1,6 @@
 import re
 import re
+
 def extract_email_line(filename):
     email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     with open(filename, 'r') as file:            
