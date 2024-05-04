@@ -33,9 +33,9 @@ def recorrer_ruta(ruta):
         for archivo in archivos:
             #if archivo.endswith(".csv"):
                 archvo_a_insertar = (os.path.join(dir, archivo))
-                print("*" * 24)
+                print("*" * 40)
                 print(archvo_a_insertar)
-                print("*" * 24)
+                print("*" * 40)
                 # Leer archivo CSV
                 with open(archvo_a_insertar, 'r') as csvfile:
                     reader = csv.reader(csvfile)    
@@ -56,6 +56,7 @@ def recorrer_ruta(ruta):
                 os.remove(archvo_a_insertar)
                 print("Archivo eliminado")    
 if __name__ == '__main__':
+    os.system("clear")
     recorrer_ruta(ruta)
     
            
