@@ -4,7 +4,7 @@ pax = {}
 
 # Conectarse a MongoDB
 def insertar_db(datos):
-    client = MongoClient('mongodb://localhost:27017/')
+    client = MongoClient('mongodb://localhost:27019/')
     db = client['datos_pax']
     collection = db['datos_pax']
     try:
@@ -23,11 +23,12 @@ with open('/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711/0.csv', 'r') as csv
     
     for row in reader:       
         for i in range (0, len(fieldnames)):
-            a = fieldnames[i] = row[i]
-            pax
-            print(a)
-                     
-            #print(pax)
-            insertar_db(pax)
+            #a = fieldnames[i] = row[i]
+            pax.update({fieldnames[i]:row[i]})  
+        print(pax) 
+        print ("*" * 22)
+        insertar_db(pax)  
+        pax = {}    
+           
  
         
