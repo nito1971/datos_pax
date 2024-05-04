@@ -8,10 +8,10 @@ ruta = "/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711"
 
 def get_hash(input_string):
     """
-    Compute the SHA-384 hash of the input string.
-    If there is an error during the computation, return None.
-    :param input_string: The string to be hashed
-    :return: The computed hash (as a hexadecimal string) or None if an error occurs
+    Se obtiene el SHA-384 hash de la cadena que se le pasa cmo arguemnto.
+    Si se produce un error, la función devuelve None.
+    :param input_string: La cadena a procesar.
+    :return: El SHA-384 hash o None si se produce un error.
     """
     try:
         return hashlib.sha384(input_string.encode()).hexdigest()
