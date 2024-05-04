@@ -61,7 +61,8 @@ def recorrer_ruta(ruta):
                     fin = time.time()
                     print("Archivo eliminado")
                     print("+" *100)
-                    print(f"Tiempo de ejecucion: {fin - inicio}")
+                    tiempo_total = (fin - inicio) / 60
+                    print(f"Tiempo total: {tiempo_total:.2f} minutos")
                     print("+" *100)
                 except:
                     pass    
