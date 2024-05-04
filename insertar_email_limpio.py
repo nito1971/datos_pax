@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import hashlib
 import os
 import time
-ruta = "/mnt/local/datos/ALIMENTACION_PROYECTOS/EMAIL/original/data"
+ruta = "/mnt/local/datos/Contras/archivos_partidos"
     
 
 def get_hash(input_string):
@@ -28,7 +28,7 @@ def insertar_db(_id):
         collection.insert_one(dato)
         #print("Ok")
     except Exception as e:
-        #print(e)
+        #print("Error")
         pass
 def recorrer_ruta(ruta):
     pax = {}
