@@ -1,16 +1,18 @@
 import re
-import re
 
-def extract_email_line(filename):
-    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    with open(filename, 'r') as file:            
-        for line in file:                  
-            if re.search(email_pattern, line):
-              return re.search(email_pattern, line).group()
+ruta = '/mnt/local/datos/Documentos/PASSW/diccpass_rockyou/original/weakpass_2a'
 
-    return None
+def buscar_email(filename):    
+    email_patron = r'([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})'
+    with open(filename, 'r', encoding="latin1") as file:
+        try:
+            for linea in file:
+                coincidencias = re.findall(email_patron, linea)
+                for coincidencia in coincidencias:
+                    print(f"Email: {coincidencia[0]}, Rest: {coincidencia[1]}")
+        except Exception as e:
+            print(f"Error: {e}")           
+        
 
-
-if __name__ == '__main__':
-    filename = '/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711/1244.csv'
-    print(extract_email_line(filename))
+if __name__ == '__main__':    
+    buscar_email(ruta)
