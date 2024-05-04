@@ -12,6 +12,7 @@ def get_hash(input_string):
     Si se produce un error, la función devuelve None.
     :param input_string: La cadena a procesar.
     :return: El SHA-384 hash o None si se produce un error.
+    
     """
     try:
         return hashlib.sha384(input_string.encode()).hexdigest()
