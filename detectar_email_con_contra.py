@@ -1,6 +1,6 @@
 import re
 
-ruta = '/mnt/local/datos/Documentos/PASSW/diccpass_rockyou/original/weakpass_2a'
+ruta = '/mnt/local/datos/Documentos/PASSW/BBDD_email/email.email_12.json'
 
 def buscar_email(filename):    
     email_patron = r'([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}):(.*)'
@@ -9,7 +9,10 @@ def buscar_email(filename):
             for linea in file:
                 coincidencias = re.findall(email_patron, linea)
                 for coincidencia in coincidencias:
-                    print(f"Email: {coincidencia[0]}, Rest: {coincidencia[1]}")
+                    correo = coincidencia[0]
+                    contra = coincidencia[1]
+                    contra = contra[:-1]# Ojo! esto sólo es válido para leer mis json. (añaden una n al final)
+                    print(f"{correo}:{contra}")
         except Exception as e:
             print(f"Error: {e}")          
         
