@@ -69,5 +69,44 @@ if __name__ == '__main__':
     recorrer_ruta(ruta)
     
            
- 
+ ###################################################################################
+'''
+---------------------------------
+Importaciones
+
+- csv: biblioteca para leer y escribir archivos CSV.
+- MongoClient y MongoDB: bibliotecas para conectarse a un servidor MongoDB.
+- hashlib: biblioteca para generar hash de cadenas de texto.
+- os: biblioteca para interactuar con el sistema operativo (Ejemplo, obtener la ruta actual del archivo).
+- time: biblioteca para trabajar con fechas y tiempos.
+
+----------------------------------
+Definiciones de funciones
+
+- get_hash(input_string): función que calcula el hash SHA-384 de una cadena de texto. Si hay un error durante el cálculo, devuelve None.
+- insertar_db(datos): función que inserta un documento en la base de datos MongoDB. Recibe un diccionario datos como parámetro y lo almacena en la colección datos_pax.
+- recorrer_ruta(ruta): función principal que recorre una ruta específica, lee archivos CSV, los procesa y los almacena en la base de datos MongoDB.
+
+- Main
+
+1- Se ejecuta el script con la instrucción os.system("clear"), lo que limpia la pantalla.
+2- Llama a la función recorrer_ruta(ruta) para recorrer la ruta especificada.
+
+-------------------------------------
+Estructura del código
+
+1- La variable ruta se define como la ruta actual del archivo.
+2- La función get_hash(input_string) se define para calcular el hash SHA-384 de una cadena de texto.
+3- La función insertar_db(datos) se define para insertar un documento en la base de datos MongoDB.
+4- La función recorrer_ruta(ruta) se define para recorrer una ruta específica, leer archivos CSV y procesarlos.
+5- Se ejecutan las instrucciones principales con la instrucción os.system("clear").
+
+--------------------------------------
+Funcionalidad
+
+El script tiene como objetivo recorrer una ruta específica, leer archivos CSV, procesarlos y almacenarlos en una base 
+de datos MongoDB. Cada archivo CSV se lee línea por línea, y cada fila se procesa generando un hash único para cada fila.
+ Luego, el diccionario resultante se almacena en la base de datos MongoDB.
         
+
+'''
