@@ -4,6 +4,7 @@ import hashlib
 import os
 pax = {}
 ruta = "/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711"
+    
 
 def get_hash(input_string):
     """
@@ -37,8 +38,7 @@ def recorrer_ruta(ruta):
                     reader = csv.reader(csvfile)    
                     # Recopilar nombres de campos de la primera fila
                     fieldnames = next(reader)[1:]  # [1:] para eliminar el título
-                    print(fieldnames)    
-                    
+                    print(fieldnames)                   
                     for row in reader:
                         _id = get_hash(str(row))
                         pax.update({"_id":_id})       
@@ -50,7 +50,7 @@ def recorrer_ruta(ruta):
                         _id = get_hash(str(pax))
                         insertar_db(pax)  
                         pax = {}
-        os.remove(archvo_a_insertar)    
+                os.remove(archvo_a_insertar)    
 if __name__ == '__main__':
     recorrer_ruta(ruta)
     
