@@ -6,7 +6,7 @@ import time
 ruta = "/mnt/local/datos/Contras/archivos_partidos"
     
 def calcular_tiempo_ejecucion(tiempo):
-    if tiempo <= 60:
+    if tiempo < 60:
         return f"{tiempo:.2f} segundos"
     else:
         tiempo_minutos = tiempo / 60
