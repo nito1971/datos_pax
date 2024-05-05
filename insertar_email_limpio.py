@@ -7,10 +7,10 @@ ruta = "/mnt/local/datos/Contras/archivos_partidos"
     
 def calcular_tiempo_ejecucion(tiempo):
     if tiempo < 60:
-        return tiempo
+       print(f"Tiempo total: {tiempo:.2f} segundos")
     else:
         tiempo_minutos = tiempo / 60
-        return tiempo_minutos
+        print(f"Tiempo total: {tiempo_minutos:.2f} minutos")
 
 
 def get_hash(input_string):
@@ -59,10 +59,10 @@ def recorrer_ruta(ruta):
             os.remove(archvo_a_insertar)
             fin = time.time()
             print("Archivo eliminado")
-            print("+" *200)
-            tiempo_total = calcular_tiempo_ejecucion(fin - inicio)
-            print(f"Tiempo total: {tiempo_total:.2f} minutos")
-            print("+" *200)
+            print("+" *100)
+            calcular_tiempo_ejecucion(fin - inicio)
+            #print(f"Tiempo total: {tiempo_total:.2f} minutos")
+            print("+" *100)
  
             
 if __name__ == '__main__':
