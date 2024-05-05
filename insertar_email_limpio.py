@@ -5,6 +5,13 @@ import os
 import time
 ruta = "/mnt/local/datos/Contras/archivos_partidos"
     
+def calcular_tiempo_ejecucion(tiempo):
+    if tiempo <= 60:
+        return f"{tiempo:.2f} segundos"
+    else:
+        tiempo_minutos = tiempo / 60
+        return f"{tiempo_minutos:.2f} minutos"
+
 
 def get_hash(input_string):
     """
@@ -30,8 +37,7 @@ def insertar_db(_id):
     except Exception as e:
         #print("Error")
         pass
-def recorrer_ruta(ruta):
-    pax = {}
+def recorrer_ruta(ruta):   
     for dir, dirs, archivos in os.walk(ruta):
         for archivo in archivos:            
             inicio = time.time()
@@ -47,13 +53,14 @@ def recorrer_ruta(ruta):
                         _id = _id.strip("\n")                              
                         insertar_db(_id) 
                 except Exception as e:
+                     print(f"Error: {e}")
                      pass                                
                         
             os.remove(archvo_a_insertar)
             fin = time.time()
             print("Archivo eliminado")
             print("+" *200)
-            tiempo_total = (fin - inicio) / 60
+            tiempo_total = calcular_tiempo_ejecucion(fin - inicio)
             print(f"Tiempo total: {tiempo_total:.2f} minutos")
             print("+" *200)
  
