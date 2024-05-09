@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import hashlib
 import os
 import time
-ruta = "/mnt/local/datos/ALIMENTACION_PROYECTOS/250807711"
+ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/250807711"
     
 
 def get_hash(input_string):
