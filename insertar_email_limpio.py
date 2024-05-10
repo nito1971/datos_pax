@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import hashlib
 import os
 import time
-ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/archivos_partidos"
+ruta = "/mnt/10.0.0.12/desarrollo/datos_pax"
     
 def calcular_tiempo_ejecucion(tiempo):
     if tiempo < 60:
