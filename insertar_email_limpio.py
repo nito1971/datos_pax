@@ -27,7 +27,7 @@ def get_hash(input_string):
         return None
 # Conectarse a MongoDB
 def insertar_db(_id):
-    client = MongoClient('mongodb://10.0.0.12:27017/')
+    client = MongoClient('mongodb://10.0.0.101:27017/')
     db = client['email']
     collection = db['email']
     dato = {"_id": _id }
