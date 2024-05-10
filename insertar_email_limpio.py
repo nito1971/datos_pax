@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import hashlib
 import os
 import time
-ruta = "/mnt/local/datos/Contras/archivos_partidos"
+ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/archivos_partidos"
     
 def calcular_tiempo_ejecucion(tiempo):
     if tiempo < 60:
@@ -39,30 +39,31 @@ def insertar_db(_id):
         pass
 def recorrer_ruta(ruta):   
     for dir, dirs, archivos in os.walk(ruta):
-        for archivo in archivos:            
-            inicio = time.time()
-            archvo_a_insertar = (os.path.join(dir, archivo))
-            print("*" * 40)
-            print(archvo_a_insertar)
-            print("*" * 40)     
-                
-            with open(archvo_a_insertar, 'r', encoding="latin1") as file:
-                try:
-                    for line in file:                                 
-                        _id = line 
-                        _id = _id.strip("\n")                              
-                        insertar_db(_id) 
-                except Exception as e:
-                     print(f"Error: {e}")
-                     pass                                
-                        
-            os.remove(archvo_a_insertar)
-            fin = time.time()
-            print("Archivo eliminado")
-            print("+" *100)
-            calcular_tiempo_ejecucion(fin - inicio)
-            #print(f"Tiempo total: {tiempo_total:.2f} minutos")
-            print("+" *100)
+        for archivo in archivos: 
+            if archivo.endswith(".txt"):         
+                inicio = time.time()
+                archvo_a_insertar = (os.path.join(dir, archivo))
+                print("*" * 40)
+                print(archvo_a_insertar)
+                print("*" * 40)     
+                    
+                with open(archvo_a_insertar, 'r', encoding="latin1") as file:
+                    try:
+                        for line in file:                                 
+                            _id = line 
+                            _id = _id.strip("\n")                              
+                            insertar_db(_id) 
+                    except Exception as e:
+                        print(f"Error: {e}")
+                        pass                                
+                            
+                os.remove(archvo_a_insertar)
+                fin = time.time()
+                print("Archivo eliminado")
+                print("+" *100)
+                calcular_tiempo_ejecucion(fin - inicio)
+                #print(f"Tiempo total: {tiempo_total:.2f} minutos")
+                print("+" *100)
  
             
 if __name__ == '__main__':
