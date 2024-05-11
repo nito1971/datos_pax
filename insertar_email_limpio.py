@@ -3,7 +3,22 @@ from pymongo import MongoClient
 import hashlib
 import os
 import time
+import random
+import os
+import pathlib
+import threading
+
 ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/"
+
+
+def numero_archivos():
+    initial_count = 0
+    for path in pathlib.Path(ruta).iterdir():
+        if path.is_file():
+            initial_count += 1
+            print(initial_count)
+
+    return(initial_count)
     
 def calcular_tiempo_ejecucion(tiempo):
     if tiempo < 60:
@@ -27,7 +42,7 @@ def get_hash(input_string):
         return None
 # Conectarse a MongoDB
 def insertar_db(_id):
-    client = MongoClient('mongodb://10.0.0.101:27017/')
+    client = MongoClient('mongodb://localhost:27019/')
     db = client['email']
     collection = db['email']
     dato = {"_id": _id }
@@ -65,7 +80,64 @@ def recorrer_ruta(ruta):
                 #print(f"Tiempo total: {tiempo_total:.2f} minutos")
                 print("+" *100)
  
-            
-if __name__ == '__main__':
+def inicio(hilo):
+    print(f"Hilo {hilo} iniciado.")
+    inicio = time.time()
+    try:        
+        indice_random = random.randint(0, len(lista_archivos))
+        archivo = lista_archivos[indice_random]
+        if archivo.endswith(".txt"):
+            ruta_archivo = os.path.join(ruta, archivo)
+            with open(ruta_archivo, "r") as f:
+                for linea in f:
+                    linea_a_hashear = linea.rstrip("\n")                    
+                    _id = linea_a_hashear            
+                                
+                    insertar_db(_id)
+                    #print(f"Usuario: {usuario} - Passwd: {passwd}")
+                                
+                os.remove(ruta_archivo)                
+                print(f"{archivo} ha sido eliminado.")
+                final = time.time()
+                tiempo_total = (final - inicio)
+                print(f"Tiempo total de ejecución: {tiempo_total} segundos para el hilo {hilo}")
+                lista_archivos.pop(indice_random)
+               
+    except Exception as e:
+        print(e)
+        return False  
+
+
+
+
+###################################################################
+###################################################################
+lista_archivos = os.listdir(ruta)
+n_archivos = numero_archivos()
+while(n_archivos() > 0):
+   # Creamos una lista de 5 hilos.
     os.system("clear")
-    recorrer_ruta(ruta)
+
+    hilos = []    
+    for i in range(3):
+        hilo = threading.Thread(target=inicio, args=(i,))
+        hilos.append(hilo)
+
+    # Iniciamos todos los hilos.
+    for hilo in hilos:
+        hilo.start()
+    
+        # Esperamos a que todos los hilos terminen.
+    for hilo in hilos:
+        hilo.join()
+
+    
+
+
+
+    
+    if(numero_archivos() == 0):
+        break
+
+   
+print("Terminado")
