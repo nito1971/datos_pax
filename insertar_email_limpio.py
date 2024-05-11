@@ -10,7 +10,7 @@ import threading
 
 ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/"
 
-
+'''
 def numero_archivos():
     initial_count = 0
     for path in pathlib.Path(ruta).iterdir():
@@ -19,6 +19,9 @@ def numero_archivos():
             print(initial_count)
 
     return(initial_count)
+
+'''
+
     
 def calcular_tiempo_ejecucion(tiempo):
     if tiempo < 60:
@@ -114,12 +117,12 @@ def inicio(hilo):
 ###################################################################
 lista_archivos = os.listdir(ruta)
 n_archivos = len(os.listdir(ruta))
-while(n_archivos() > 0):
+while(n_archivos > 0):
    # Creamos una lista de 5 hilos.
-    os.system("clear")
+    #os.system("clear")
 
     hilos = []    
-    for i in range(3):
+    for i in range(15):
         hilo = threading.Thread(target=inicio, args=(i,))
         hilos.append(hilo)
 
@@ -132,12 +135,5 @@ while(n_archivos() > 0):
         hilo.join()
 
     
-
-
-
-    
-    if(numero_archivos() == 0):
-        break
-
    
 print("Terminado")
