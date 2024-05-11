@@ -113,7 +113,7 @@ def inicio(hilo):
 ###################################################################
 ###################################################################
 lista_archivos = os.listdir(ruta)
-n_archivos = numero_archivos()
+n_archivos = len(os.listdir(ruta))
 while(n_archivos() > 0):
    # Creamos una lista de 5 hilos.
     os.system("clear")
