@@ -46,7 +46,8 @@ def get_hash(input_string):
         return None
 # Conectarse a MongoDB
 def insertar_db(_id):
-    client = MongoClient('mongodb://localhost:27019/')
+    client = MongoClient('mongodb://10.0.0.12:27017/')
+    #client = MongoClient('mongodb://localhost:27019/')
     db = client['email']
     collection = db['email']
     dato = {"_id": _id }
@@ -56,7 +57,7 @@ def insertar_db(_id):
     except Exception as e:
         razon = str(e)
         if re.search("E11000 duplicate key", razon):
-            print("Clave dupicada")
+            print("Clave duplicada")
         else:
             print(e)
         pass
@@ -134,7 +135,7 @@ while(n_archivos > 0):
     #os.system("clear")
 
     hilos = []    
-    for i in range(20):
+    for i in range(10):
         hilo = threading.Thread(target=inicio, args=(i,))
         hilos.append(hilo)
 
