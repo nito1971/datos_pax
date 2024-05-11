@@ -25,6 +25,7 @@ while True:
             collection_a.delete_one({'_id': doc['_id']})
     except Exception as e:
         print(f"Error al leer o insertar documentos: {e}")
+        pass
 
     break  # Se puede cambiar a un bucle infinito si se desea leer documentos en bucle
 

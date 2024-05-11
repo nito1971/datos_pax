@@ -7,6 +7,7 @@ import random
 import os
 import pathlib
 import threading
+import re
 
 ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/"
 
@@ -53,7 +54,11 @@ def insertar_db(_id):
         collection.insert_one(dato)
         #print("Ok")
     except Exception as e:
-        #print("Error")
+        razon = str(e)
+        if re.search("E11000 duplicate key", razon):
+            print("Clave dupicada")
+        else:
+            print(e)
         pass
 def recorrer_ruta(ruta):   
     for dir, dirs, archivos in os.walk(ruta):
@@ -67,10 +72,14 @@ def recorrer_ruta(ruta):
                     
                 with open(archvo_a_insertar, 'r', encoding="latin1") as file:
                     try:
-                        for line in file:                                 
-                            _id = line 
-                            _id = _id.strip("\n")                              
-                            insertar_db(_id) 
+                        for line in file:
+                            if line != ""+"\n":                                 
+                                _id = line 
+                                _id = _id.strip("\n")                              
+                                insertar_db(_id) 
+                            else:
+                                pass
+
                     except Exception as e:
                         print(f"Error: {e}")
                         pass                                
@@ -93,11 +102,14 @@ def inicio(hilo):
             ruta_archivo = os.path.join(ruta, archivo)
             with open(ruta_archivo, "r") as f:
                 for linea in f:
-                    linea_a_hashear = linea.rstrip("\n")                    
-                    _id = linea_a_hashear            
-                                
-                    insertar_db(_id)
-                    #print(f"Usuario: {usuario} - Passwd: {passwd}")
+                    if linea != ""+"\n":
+                        linea_a_hashear = linea.rstrip("\n")                    
+                        _id = linea_a_hashear            
+                                    
+                        insertar_db(_id)
+                        #print(f"Usuario: {usuario} - Passwd: {passwd}")
+                    else:
+                        pass
                                 
                 os.remove(ruta_archivo)                
                 print(f"{archivo} ha sido eliminado.")
@@ -122,7 +134,7 @@ while(n_archivos > 0):
     #os.system("clear")
 
     hilos = []    
-    for i in range(15):
+    for i in range(20):
         hilo = threading.Thread(target=inicio, args=(i,))
         hilos.append(hilo)
 
