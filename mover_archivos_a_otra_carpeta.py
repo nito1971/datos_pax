@@ -16,3 +16,4 @@ for filename in os.listdir(src_dir):
         
         # Mover el archivo a la carpeta destino
         shutil.move(filepath, dst_dir)
+        print(f"Archivo {filename} movido a la carpeta {dst_dir}")
