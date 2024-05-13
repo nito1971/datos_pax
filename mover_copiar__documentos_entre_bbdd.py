@@ -11,25 +11,26 @@ client_b = pymongo.MongoClient('mongodb://10.0.0.100:27017/email')
 db_b = client_b['email']
 collection_b = db_b['email']
 
+
+# Lee documentos desde la base de datos A
+cursor = collection_a.find()
 while True:
-    # Lee documentos desde la base de datos A
-    cursor = collection_a.find()
     try:
         for doc in cursor:
-            print(f"Documento leido: {doc['_id']}")
+                print(f"Documento leido: {doc['_id']}")
 
-            # Inserta el documento en la base de datos B
-            collection_b.insert_one(doc)
-            print(f"Documento insertado: {doc['_id']}")
+                # Inserta el documento en la base de datos B
+                collection_b.insert_one(doc)
+                print(f"Documento insertado: {doc['_id']}")
 
-            # Borra el documento de la base de datos A
-            #collection_a.delete_one({'_id': doc['_id']})
-            print(f"Documento borrado: {doc['_id']}")
+                # Borra el documento de la base de datos A
+                #collection_a.delete_one({'_id': doc['_id']})
+                #print(f"Documento borrado: {doc['_id']}")
     except Exception as e:
-        print(f"error: {e}")
-        #collection_a.delete_one({'_id': doc['_id']})
-        print(f"Documento borrado: {doc['_id']}")
-        pass
+            print(f"error")
+            #collection_a.delete_one({'_id': doc['_id']})
+            #print(f"Documento borrado: {doc['_id']}")
+            pass
 
     
 
