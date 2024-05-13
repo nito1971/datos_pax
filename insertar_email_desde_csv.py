@@ -4,7 +4,7 @@ from pymongo import MongoClient
 import re
 
 
-ruta = "/mnt/local/datos/Documentos/PASSW/BBDD_email/email.email_mongo_3.csv"
+ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/BBDD_email/email.email.csv"
 contador = 0
 
 '''
@@ -16,8 +16,8 @@ with open(ruta, 'r') as csvfile:
 '''
 # Conectarse a MongoDB
 def insertar_db(_id):
-    #client = MongoClient('mongodb://10.0.0.12:27017/')
-    client = MongoClient('mongodb://localhost:27019/')
+    client = MongoClient('mongodb://10.0.0.12:27017/')
+    #client = MongoClient('mongodb://localhost:27019/')
     db = client['email']
     collection = db['email']
     dato = {"_id": _id }

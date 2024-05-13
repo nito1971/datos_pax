@@ -7,7 +7,7 @@ db_a = client_a['email']
 collection_a = db_a['email']
 
 # Conexiones a las bases de datos y colecciones en servidor 2 (192.168.1.11)
-client_b = pymongo.MongoClient('mongodb://localhost:27019/email')
+client_b = pymongo.MongoClient('mongodb://10.0.0.100:27017/email')
 db_b = client_b['email']
 collection_b = db_b['email']
 
@@ -23,11 +23,11 @@ while True:
             print(f"Documento insertado: {doc['_id']}")
 
             # Borra el documento de la base de datos A
-            collection_a.delete_one({'_id': doc['_id']})
+            #collection_a.delete_one({'_id': doc['_id']})
             print(f"Documento borrado: {doc['_id']}")
     except Exception as e:
         print(f"error: {e}")
-        collection_a.delete_one({'_id': doc['_id']})
+        #collection_a.delete_one({'_id': doc['_id']})
         print(f"Documento borrado: {doc['_id']}")
         pass
 

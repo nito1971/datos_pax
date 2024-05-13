@@ -9,7 +9,7 @@ import pathlib
 import threading
 import re
 
-ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/"
+ruta = "/mnt/10.0.0.12/desarrollo/datos_pax/archivos_partidos"
 
 '''
 def numero_archivos():
